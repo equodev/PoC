@@ -28,9 +28,14 @@ equoPassword=bHVzaXRhbm8yMDE4
     org.bouncycastle.bcprov,\
     org.xbill.dns,\
     com.make.equo.monaco,\
+	com.make.equo.filesystem.api,\
+	com.make.equo.filesystem.provider,\
+	org.apache.commons.io,\
     io.netty.all,\
     org.eclipse.jface.text,\
     org.eclipse.text,\
     org.aspectj.runtime;version='[1.9.6,1.9.7)',\
     org.aspectj.weaver,\
-    org.eclipse.equinox.weaving.aspectj
+    org.eclipse.equinox.weaving.aspectj,\
+	com.make.equo.ui.helper.provider,\
+	com.make.equo.renderers

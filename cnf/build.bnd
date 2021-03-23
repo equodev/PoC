@@ -7,6 +7,18 @@ Bundle-ActivationPolicy: lazy
         poll.time = -1; \
         cache = ~/.bnd/cache/equo
 
+-plugin.1.EquoExtras: \
+    aQute.bnd.repository.p2.provider.P2Repository; \
+        name = EquoExtras; \
+        url = "https://equo-framework-extras.ams3.digitaloceanspaces.com/0.2.0/repo/"; \
+        poll.time = -1
+
+-plugin.1.EquoRenderers: \
+    aQute.bnd.repository.p2.provider.P2Repository; \
+        name = EquoRenderers; \
+        url = "https://equo-framework-renderers.ams3.digitaloceanspaces.com/0.2.0/repo/"; \
+        poll.time = -1
+
 -plugin.2.EquoMonaco: \
     aQute.bnd.repository.p2.provider.P2Repository; \
         name = "Equo Monaco Editor"; \
