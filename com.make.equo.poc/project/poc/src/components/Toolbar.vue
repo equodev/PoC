@@ -37,12 +37,6 @@ export default {
     closeEditorFunction: {
       type: Function
     }
-    // shouldShowClose: {
-    //   type: Boolean,
-    //   default() {
-    //     return false;
-    //   }
-    // }
   },
   data: () => ({
     crossEnable: false
