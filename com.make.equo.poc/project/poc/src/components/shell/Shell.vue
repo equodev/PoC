@@ -31,12 +31,11 @@ socket.addEventListener('open', function () {
                 action : "addShell"
         })
     socket.send(msg,function (event) {
-        console.log("callback de creacion de shell ",event);
+        console.log("callback shell creation",event);
     });
 });
 
 socket.addEventListener('message', function (event) {
-    //console.log('svr msg: ', event.data);
     try {
         var msg = JSON.parse(event.data);
         if(msg.action === "addShell"){

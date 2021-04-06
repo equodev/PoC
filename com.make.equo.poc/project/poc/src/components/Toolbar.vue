@@ -1,51 +1,66 @@
 <template>
-    <div class="toolbar-container">
-        <v-toolbar height="35px" color="primary">
-          <slot></slot>
-          <v-spacer></v-spacer>
-          <v-btn v-if="shouldShowClose" dark icon text @click="this.closeEditorFunction" v->
-            <font-awesome-icon :icon="['fas','times']" />
-          </v-btn>
-        </v-toolbar>
-    </div>
+  <div class="toolbar-container">
+    <v-toolbar height="35px" color="primary">
+      <slot></slot>
+      <v-spacer></v-spacer>
+      <v-btn
+        v-if="crossEnable"
+        dark
+        icon
+        text
+        @click="this.closeEditorFunction"
+        v-
+      >
+        <font-awesome-icon :icon="['fas', 'times']" />
+      </v-btn>
+    </v-toolbar>
+  </div>
 </template>
 
 <script>
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-library.add(
-  fas
-)
+library.add(fas);
 
 export default {
-  name: 'equo-toolbar',
+  name: "equo-toolbar",
   components: { FontAwesomeIcon },
-  props:{
-    toolitems:{
+  props: {
+    toolitems: {
       type: Array,
-      default(){ return []} 
-      },
+      default() {
+        return [];
+      }
+    },
     closeEditorFunction: {
       type: Function
-    },
-    shouldShowClose:{
-      type: Boolean,
-      default() { return false }
     }
+    // shouldShowClose: {
+    //   type: Boolean,
+    //   default() {
+    //     return false;
+    //   }
+    // }
   },
   data: () => ({
-     
+    crossEnable: false
   }),
-    methods: {
+  methods: {
+    toggleCross(value) {
+      this.crossEnable = value;
     }
-
+  },
+  mounted() {
+    this.$root.$on("toolbarToggleCross", value => {
+      this.toggleCross(value);
+    });
   }
+};
 </script>
 <style>
-.toolbar-container{
+.toolbar-container {
   height: 35px;
 }
-
 </style>
