@@ -70,37 +70,37 @@ export default {
         {
           title: "Open",
           eventHandler: function(node, tree) {
-            tree.$root.$emit("openEditor", node.data.path);
+            tree.openEditor( node.data.path);
           }
         },
         {
           title: "Cut",
           shortcut: "Ctrl + X",
           eventHandler: function(node, tree) {
-            tree.cutSelection = true;
-            tree.selectedNode = node;
+            tree.setCutSelection(true);
+            tree.setSelectedNode(node);
           }
         },
         {
           title: "Copy",
           shortcut: "Ctrl + C",
           eventHandler: function(node, tree) {
-            tree.cutSelection = false;
-            tree.selectedNode = node;
+            tree.setCutSelection(false);
+            tree.setSelectedNode(node);
           }
         },
         {
           title: "Paste",
           shortcut: "Ctrl + V",
           eventHandler: function(node, tree) {
-            tree.$root.$emit("pasteFile", node, tree);
+            tree.pasteFile( node, tree);
           }
         },
         {
           title: "Remove",
           shortcut: "Supr",
           eventHandler: function(node, tree) {
-            tree.$root.$emit("removeFile", node, tree);
+            tree.removeFile( node, tree);
           }
         }
       ],
@@ -145,38 +145,21 @@ export default {
   created() {
     this.menuWithoutEditor = Menu.create()
       .withMainMenu("File")
-      .addMenuItem("Open folder")
-      .addShortcut("M1+O")
-      .onClick(this.openFolder)
-      .addMenuItem("Exit")
-      .addShortcut("M1+Q")
-      .onClick("exitapphandler");
+        .addMenuItem("Open folder").addShortcut("M1+O").onClick(this.openFolder)
+        .addMenuItem("Exit").addShortcut("M1+Q").onClick("exitapphandler");
 
     this.menuWithEditor = Menu.create()
       .withMainMenu("File")
-      .addMenuItem("Open folder")
-      .addShortcut("M1+O")
-      .onClick(this.openFolder)
-      .addMenuItem("Save")
-      .addShortcut("M1+S")
-      .onClick(this.save)
-      .addMenuItem("Exit")
-      .addShortcut("M1+Q")
-      .onClick("exitapphandler")
+        .addMenuItem("Open folder").addShortcut("M1+O").onClick(this.openFolder)
+        .addMenuItem("Save").addShortcut("M1+S").onClick(this.save)
+        .addMenuItem("Exit").addShortcut("M1+Q").onClick("exitapphandler")
       .withMainMenu("Edit")
-      .addMenuItem("Cut")
-      .addShortcut("M1+X")
-      .onClick(this.editorCut)
-      .addMenuItem("Copy")
-      .addShortcut("M1+C")
-      .onClick(this.editorCopy)
-      .addMenuItem("Paste")
-      .addShortcut("M1+V")
-      .onClick(this.editorPaste);
+        .addMenuItem("Cut").addShortcut("M1+X").onClick(this.editorCut)
+        .addMenuItem("Copy").addShortcut("M1+C").onClick(this.editorCopy)
+        .addMenuItem("Paste").addShortcut("M1+V").onClick(this.editorPaste);
 
     this.menuWithoutEditor.setApplicationMenu();
   }
-  /* eslint-enable */
 };
 </script>
 

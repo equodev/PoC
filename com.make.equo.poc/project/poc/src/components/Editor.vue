@@ -46,16 +46,16 @@ export default {
       } else {
         this.doOpenEditor(path);
       }
-      this.$root.$emit('toolbarToggleCross',true)
+      this.$root.$emit("toolbarToggleCross", true);
     },
     closeEditor() {
       let app = this;
       this.closeExistingEditor(function() {
         app.editor.dispose();
         app.editor = undefined;
+        this.$root.$emit("toolbarToggleCross", false);
+        this.closeEvent();
       });
-      this.$root.$emit('toolbarToggleCross',false)
-      this.closeEvent();
     },
     closeExistingEditor(closingFunction) {
       if (this.thereIsAnEditor()) {
@@ -121,21 +121,22 @@ export default {
     }
   },
   mounted() {
-        // register an event that return a Promise with a value
-    this.$root.$on("thereIsAnEditor", (promise) => {
+    // register an event that return a Promise with a value
+    this.$root.$on("thereIsAnEditor", promise => {
       setTimeout(() => promise.resolve(this.thereIsAnEditor()), 1000);
     });
-    this.$root.$on("getActualFilePath", (promise) => {
-     setTimeout(() => promise.resolve(this.getActualFilePath()), 1000);
+    this.$root.$on("getActualFilePath", promise => {
+      setTimeout(() => promise.resolve(this.getActualFilePath()), 1000);
     });
     this.$root.$on("openEditor", path => {
       this.openEditor(path);
     });
-    this.$root.$on("conditionalCloseEditor", (path) => {
-      if(this.thereIsAnEditor() && path === this.getActualFilePath()){
-        this.closeEditor();
+    this.$root.$on("conditionalCloseEditor", path => {
+      if (this.thereIsAnEditor() && path === this.getActualFilePath()) {
+        this.editor.dispose();
+        this.editor = undefined;
+        this.$root.$emit("toolbarToggleCross", false);
       }
-    
     });
     this.$root.$on("closeEditor", () => {
       this.closeEditor();

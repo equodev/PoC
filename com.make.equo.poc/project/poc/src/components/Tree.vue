@@ -115,6 +115,12 @@ export default {
     };
   },
   methods: {
+    setCutSelection(value) {
+      this.cutSelection = value;
+    },
+    setSelectedNode(value) {
+      this.selectedNode = value;
+    },
     clickedOutside(event) {
       if (!this.isInWhiteList(event.target)) this.contextMenuIsVisible = false;
     },
@@ -249,77 +255,84 @@ export default {
       equo.send("confirmremovehandler");
     },
     updatePath(tree, node) {
-      return node;
+      let originLength = tree.selectedNode.path.length;
+      let destLength = node.path.length;
+      // If origin is removed from somewhere deeper than destination, it does not affect
+      if (originLength <= destLength) {
+        var i;
+        for (i = 0; i < originLength; i++) {
+          let originIndex = tree.selectedNode.path[i];
+          let destIndex = node.path[i];
+          // If the origin is removed from somewhere previous destination folder, update destination index
+          if (originIndex < destIndex && i == originLength - 1) {
+            node.path[i]--;
+            if (i == destLength - 1) {
+              node.ind--;
+            }
+            break;
+          } else if (originIndex != destIndex) {
+            // If the origin is inside another path and does not move destination folder, break loop
+            break;
+          }
+        }
+      }
+    },
+    internalMoveFile(tree, node) {
+      var app = this;
+      // eslint-disable-next-line
+      equo.moveFile(tree.selectedNode.data.path, node.data.path, function(
+        response
+      ) {
+        if (!response.err) {
+          tree.$refs.sltree.remove([tree.selectedNode.path]);
+          app.$root.$emit(
+            "conditionalCloseEditor",
+            tree.selectedNode.data.path
+          );
+          app.updatePath(tree, node);
+          if (node.data.wasExpandedBefore === true) {
+            // eslint-disable-next-line
+            equo.fileInfo(response.content, function(secondResponse) {
+              tree.$refs.sltree.insert(
+                {
+                  node: node,
+                  placement: "inside"
+                },
+                app.transformResponseToTreeData(secondResponse)
+              );
+            });
+          }
+        }
+      });
+    },
+    internalCopyFile(tree, node) {
+      var app = this;
+      // eslint-disable-next-line
+      equo.copyFile(tree.selectedNode.data.path, node.data.path, function(
+        response
+      ) {
+        tree.selectedNode = undefined;
+        if (!response.err && node.data.wasExpandedBefore === true) {
+          // eslint-disable-next-line
+          equo.fileInfo(response.content, function(secondResponse) {
+            tree.$refs.sltree.insert(
+              {
+                node: node,
+                placement: "inside"
+              },
+              app.transformResponseToTreeData(secondResponse)
+            );
+          });
+        }
+      });
     },
     pasteFile(node, tree) {
-      var app = this;
       if (!node.isLeaf) {
         if (typeof tree.selectedNode !== "undefined") {
           if (tree.cutSelection) {
-            // eslint-disable-next-line
-            equo.moveFile(tree.selectedNode.data.path, node.data.path, function(
-              response
-            ) {
-              if (!response.err) {
-                tree.$refs.sltree.remove([tree.selectedNode.path]);
-                app.$root.$emit(
-                  "conditionalCloseEditor",
-                  tree.selectedNode.data.path
-                );
-                let originLength = tree.selectedNode.path.length;
-                let destLength = node.path.length;
-                // If origin is removed from somewhere deeper than destination, it does not affect
-                if (originLength <= destLength) {
-                  var i;
-                  for (i = 0; i < originLength; i++) {
-                    let originIndex = tree.selectedNode.path[i];
-                    let destIndex = node.path[i];
-                    // If the origin is removed from somewhere previous destination folder, update destination index
-                    if (originIndex < destIndex && i == originLength - 1) {
-                      node.path[i]--;
-                      if (i == destLength - 1) {
-                        node.ind--;
-                      }
-                      break;
-                    } else if (originIndex != destIndex) {
-                      // If the origin is inside another path and does not move destination folder, break loop
-                      break;
-                    }
-                  }
-                }
-                if (node.data.wasExpandedBefore === true) {
-                  // eslint-disable-next-line
-                  equo.fileInfo(response.content, function(secondResponse) {
-                    tree.$refs.sltree.insert(
-                      {
-                        node: node,
-                        placement: "inside"
-                      },
-                      app.transformResponseToTreeData(secondResponse)
-                    );
-                  });
-                }
-              }
-            });
+            this.internalMoveFile(tree, node);
           } else {
-            // eslint-disable-next-line
-            equo.copyFile(tree.selectedNode.data.path, node.data.path, function(
-              response
-            ) {
-              tree.selectedNode = undefined;
-              if (!response.err && node.data.wasExpandedBefore === true) {
-                // eslint-disable-next-line
-                equo.fileInfo(response.content, function(secondResponse) {
-                  tree.$refs.sltree.insert(
-                    {
-                      node: node,
-                      placement: "inside"
-                    },
-                    app.transformResponseToTreeData(secondResponse)
-                  );
-                });
-              }
-            });
+            this.internalCopyFile(tree, node);
           }
         }
       }
