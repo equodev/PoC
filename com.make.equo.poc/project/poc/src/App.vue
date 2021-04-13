@@ -29,8 +29,6 @@
           title="Explorer"
           :extensionicons="extensionIcons"
           :menuoptions="contextMenuOptions"
-          @pasteFile="pasteFile"
-          @removeFile="removeFile"
         />
       </div>
       <div class="editorShellDiv">

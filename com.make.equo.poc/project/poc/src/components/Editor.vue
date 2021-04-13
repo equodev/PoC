@@ -53,8 +53,8 @@ export default {
       this.closeExistingEditor(function() {
         app.editor.dispose();
         app.editor = undefined;
-        this.$root.$emit("toolbarToggleCross", false);
-        this.closeEvent();
+        app.$root.$emit("toolbarToggleCross", false);
+        app.closeEvent();
       });
     },
     closeExistingEditor(closingFunction) {
