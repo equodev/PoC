@@ -18,7 +18,8 @@ equoPassword=bHVzaXRhbm8yMDE4
 -privatepackage: \
 	com.make.equo.poc.eventhandlers,\
 	com.make.equo.poc.payloads
-
+#-runproperties.devmode: dev.app.url=192.168.0.24:8080
+#-runvm.debug: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=1044"
 -runbundles.poc: \
     com.make.equo.aspects,\
     com.make.equo.widgets.shell,\
