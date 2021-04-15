@@ -88,6 +88,7 @@ export default {
     },
     editorFind() {
       if (this.thereIsAnEditor()) {
+        this.editor.getEditor().focus();
         this.editor
           .getEditor()
           .getAction("actions.find")
@@ -96,18 +97,14 @@ export default {
     },
     editorCut() {
       if (this.thereIsAnEditor()) {
-        this.editor
-          .getEditor()
-          .getAction("editor.action.clipboardCutAction")
-          .run();
+        this.editor.getEditor().focus();
+        document.execCommand("cut");
       }
     },
     editorCopy() {
       if (this.thereIsAnEditor()) {
-        this.editor
-          .getEditor()
-          .getAction("editor.action.clipboardCopyAction")
-          .run();
+        this.editor.getEditor().focus();
+        document.execCommand("copy");
       }
     },
     editorPaste() {

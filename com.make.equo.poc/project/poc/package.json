@@ -9,8 +9,8 @@
   },
   "dependencies": {
     "@equo/equo-application-menu": "^0.1.6",
-    "@equo/equo-monaco-editor": "^0.1.4",
-    "monaco-editor-webpack-plugin": "^1.9.0",
+    "@equo/equo-monaco-editor": "^0.1.5",
+    "monaco-editor-webpack-plugin": "^3.0.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
     "@fortawesome/free-brands-svg-icons": "^5.13.0",
     "@fortawesome/free-regular-svg-icons": "^5.13.0",

@@ -68,7 +68,7 @@ export default {
         {
           title: "Open",
           eventHandler: function(node, tree) {
-            tree.openEditor( node.data.path);
+            tree.node2Click(node);
           }
         },
         {
