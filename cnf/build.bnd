@@ -3,26 +3,26 @@ Bundle-ActivationPolicy: lazy
 -plugin.1.Equo: \
     aQute.bnd.repository.p2.provider.P2Repository; \
         name = Equo; \
-        url = "https://equo-framework.ams3.digitaloceanspaces.com/0.2.0/repo/"; \
+        url = "https://dl.equoplatform.com/framework/develop/repo/"; \
         poll.time = -1; \
         cache = ~/.bnd/cache/equo
 
 -plugin.1.EquoExtras: \
     aQute.bnd.repository.p2.provider.P2Repository; \
         name = EquoExtras; \
-        url = "https://equo-framework-extras.ams3.digitaloceanspaces.com/0.2.0/repo/"; \
+        url = "https://dl.equoplatform.com/framework-extras/develop/repo/"; \
         poll.time = -1
 
 -plugin.1.EquoRenderers: \
     aQute.bnd.repository.p2.provider.P2Repository; \
         name = EquoRenderers; \
-        url = "https://equo-framework-renderers.ams3.digitaloceanspaces.com/0.2.0/repo/"; \
+        url = "https://dl.equoplatform.com/framework-renderers/develop/repo/"; \
         poll.time = -1
 
 -plugin.2.EquoMonaco: \
     aQute.bnd.repository.p2.provider.P2Repository; \
         name = "Equo Monaco Editor"; \
-        url = "https://equo-monaco-editor.ams3.digitaloceanspaces.com/rls/p2/"
+        url = "https://dl.equoplatform.com/monaco-editor/rls/p2/"
 
 -plugin.3.Release: \
     aQute.bnd.deployer.repository.LocalIndexedRepo; \

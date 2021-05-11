@@ -15,7 +15,7 @@ public class EquoApp implements IEquoApplication {
 	@Override
 	public EquoApplicationBuilder buildApp(EquoApplicationBuilder appBuilder) {
 		try {
-			return appBuilder.plainApp("index.html").beforeExit(() -> {
+			return appBuilder.withUI("index.html").beforeExit(() -> {
 				return new ExitAppHandler().showDialog() == IDialogConstants.OK_ID;
 			}).start();
 
