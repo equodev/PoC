@@ -12,5 +12,5 @@
     "clean": "rimraf resources",
     "copy":  "cp -r project/*/dist/ resources"
   },
-  "name": "com.make.equo.poc"
+  "name": "com.equo.poc"
 }

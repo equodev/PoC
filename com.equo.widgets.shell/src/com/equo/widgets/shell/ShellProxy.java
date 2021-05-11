@@ -1,4 +1,4 @@
-package com.make.equo.widgets.shell;
+package com.equo.widgets.shell;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

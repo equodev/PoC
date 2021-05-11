@@ -1,4 +1,4 @@
-package com.make.equo.poc.payloads;
+package com.equo.poc.payloads;
 
 public class Payload {
 	

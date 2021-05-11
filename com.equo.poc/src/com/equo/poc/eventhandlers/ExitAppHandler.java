@@ -1,11 +1,11 @@
-package com.make.equo.poc.eventhandlers;
+package com.equo.poc.eventhandlers;
 
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.osgi.service.component.annotations.Component;
 
-import com.make.equo.poc.payloads.Payload;
-import com.make.equo.ws.api.actions.IActionHandler;
+import com.equo.poc.payloads.Payload;
+import com.equo.ws.api.actions.IActionHandler;
 
 @SuppressWarnings("serial")
 @Component

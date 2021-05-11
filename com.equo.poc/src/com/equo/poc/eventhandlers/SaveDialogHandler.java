@@ -1,4 +1,4 @@
-package com.make.equo.poc.eventhandlers;
+package com.equo.poc.eventhandlers;
 
 import java.util.HashMap;
 
@@ -8,8 +8,8 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
-import com.make.equo.ws.api.IEquoEventHandler;
-import com.make.equo.ws.api.IEquoRunnable;
+import com.equo.ws.api.IEquoEventHandler;
+import com.equo.ws.api.IEquoRunnable;
 
 @Component
 public class SaveDialogHandler {

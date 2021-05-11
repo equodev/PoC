@@ -5,7 +5,7 @@
 #-runrepos: Release
 
 Bundle-Version: 0.0.1
-Private-Package: com.make.equo.poc
+Private-Package: com.equo.poc
     
 # Application Name
 appName=EquoApp
@@ -16,13 +16,13 @@ equoUsername='YWRtaW4='
 equoPassword=bHVzaXRhbm8yMDE4
 
 -privatepackage: \
-	com.make.equo.poc.eventhandlers,\
-	com.make.equo.poc.payloads
+	com.equo.poc.eventhandlers,\
+	com.equo.poc.payloads
 #-runproperties.devmode: dev.app.url=192.168.0.24:8080
 #-runvm.debug: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=1044"
 -runbundles.poc: \
-    com.make.equo.aspects,\
-    com.make.equo.widgets.shell,\
+    com.equo.aspects,\
+    com.equo.widgets.shell,\
     org.apache.commons.cli,\
     org.apache.commons.codec,\
     org.apache.commons.lang,\
@@ -30,9 +30,9 @@ equoPassword=bHVzaXRhbm8yMDE4
     org.bouncycastle.bcpkix,\
     org.bouncycastle.bcprov,\
     org.xbill.dns,\
-    com.make.equo.monaco,\
-	com.make.equo.filesystem.api,\
-	com.make.equo.filesystem.provider,\
+    com.equo.monaco,\
+	com.equo.filesystem.api,\
+	com.equo.filesystem.provider,\
 	org.apache.commons.io,\
     io.netty.all,\
     org.eclipse.jface.text,\
@@ -40,5 +40,5 @@ equoPassword=bHVzaXRhbm8yMDE4
     org.aspectj.runtime;version='[1.9.6,1.9.7)',\
     org.aspectj.weaver,\
     org.eclipse.equinox.weaving.aspectj,\
-	com.make.equo.ui.helper.provider,\
-	com.make.equo.renderers
+	com.equo.ui.helper.provider,\
+	com.equo.renderers
