@@ -1,30 +1,15 @@
 Bundle-ActivationPolicy: lazy
 
--plugin.1.Equo: \
-    aQute.bnd.repository.p2.provider.P2Repository; \
-        name = Equo; \
-        url = "https://dl.equoplatform.com/framework/develop/repo/"; \
-        poll.time = -1; \
-        cache = ~/.bnd/cache/equo
+-include: https://dl.equoplatform.com/framework/develop/equobuild.bnd,\
+	https://dl.equoplatform.com/framework-extras/develop/equobuild.bnd,\
+	https://dl.equoplatform.com/framework-renderers/develop/equobuild.bnd
 
--plugin.1.EquoExtras: \
-    aQute.bnd.repository.p2.provider.P2Repository; \
-        name = EquoExtras; \
-        url = "https://dl.equoplatform.com/framework-extras/develop/repo/"; \
-        poll.time = -1
-
--plugin.1.EquoRenderers: \
-    aQute.bnd.repository.p2.provider.P2Repository; \
-        name = EquoRenderers; \
-        url = "https://dl.equoplatform.com/framework-renderers/develop/repo/"; \
-        poll.time = -1
-
--plugin.2.EquoMonaco: \
-    aQute.bnd.repository.p2.provider.P2Repository; \
+-plugin.1.EquoMonaco: \
+    aQute.bnd.repository.osgi.OSGiRepository; \
         name = "Equo Monaco Editor"; \
-        url = "https://dl.equoplatform.com/monaco-editor/rls/p2/"
+        locations = "https://dl.equoplatform.com/monaco-editor/rls/repo/index.xml.gz"
 
--plugin.3.Release: \
+-plugin.2.Release: \
     aQute.bnd.deployer.repository.LocalIndexedRepo; \
         name = Release; \
         local = ${build}/release; \

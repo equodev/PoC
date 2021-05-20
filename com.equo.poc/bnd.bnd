@@ -22,7 +22,7 @@ equoPassword=bHVzaXRhbm8yMDE4
 #-runvm.debug: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=1044"
 -runbundles.poc: \
     com.equo.widgets.shell,\
-    com.make.equo.monaco,\
+    com.equo.monaco,\
     io.netty.all,\
     org.eclipse.jface.text,\
     org.eclipse.text

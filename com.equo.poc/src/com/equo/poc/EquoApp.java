@@ -1,7 +1,5 @@
 package com.equo.poc;
 
-import java.net.URISyntaxException;
-
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.osgi.service.component.annotations.Component;
 
@@ -14,15 +12,9 @@ public class EquoApp implements IEquoApplication {
 
 	@Override
 	public EquoApplicationBuilder buildApp(EquoApplicationBuilder appBuilder) {
-		try {
-			return appBuilder.withUI("index.html").beforeExit(() -> {
-				return new ExitAppHandler().showDialog() == IDialogConstants.OK_ID;
-			}).start();
-
-		} catch (URISyntaxException e) {
-			e.printStackTrace();
-		}
-		return null;
+		return appBuilder.withUI("index.html").beforeExit(() -> {
+			return new ExitAppHandler().showDialog() == IDialogConstants.OK_ID;
+		}).start();
 	}
 
 }
