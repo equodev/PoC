@@ -11,12 +11,12 @@ This project shows off how you can create a modern multi-bundle desktop applicat
 3. Install Eclipse.
 4. Inside Eclipse, go to *Help->Install New Software*, and paste the following repo URL: `https://bndtools.jfrog.io/bndtools/update-latest`. Proceed with the installation of Bndtools and restart Eclipse if it asks for it.
 5. Clone this project.
-6. Import `cnf`, `com.make.equo.poc`, and `com.make.equo.widgets.shell` projects as `Existing Projects into Workspace`.
+6. Import `cnf`, `com.equo.poc`, and `com.equo.widgets.shell` projects as `Existing Projects into Workspace`.
 7. Go to a terminal, and in the root folder of this project run: `./gradlew release`.
 
 ## Run the Application
 
-Once you have built the demo app, you can run it by opening the file `com.make.equo.poc/bnd.bnd` and and running it.
+Once you have built the demo app, you can run it by opening the file `com.equo.poc/bnd.bnd` and and running it.
 
 ## Troubleshooting
 
