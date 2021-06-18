@@ -1,15 +1,11 @@
 Bundle-ActivationPolicy: lazy
 
--include: https://dl.equoplatform.com/framework/1.0.0/equobuild.bnd,\
-	https://dl.equoplatform.com/framework-extras/1.0.0/equobuild.bnd,\
-	https://dl.equoplatform.com/framework-renderers/1.0.0/equobuild.bnd
+-include: https://dl.equoplatform.com/framework/develop/equobuild.bnd,\
+	https://dl.equoplatform.com/framework-extras/develop/equobuild.bnd,\
+	https://dl.equoplatform.com/framework-renderers/develop/equobuild.bnd,\
+	https://dl.equoplatform.com/monaco-editor/develop/equobuild.bnd
 
--plugin.1.EquoMonaco: \
-    aQute.bnd.repository.osgi.OSGiRepository; \
-        name = "Equo Monaco Editor"; \
-        locations = "https://dl.equoplatform.com/monaco-editor/1.0.0/repo/index.xml.gz"
-
--plugin.2.Release: \
+-plugin.Release: \
     aQute.bnd.deployer.repository.LocalIndexedRepo; \
         name = Release; \
         local = ${build}/release; \
