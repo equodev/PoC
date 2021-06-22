@@ -1,0 +1,25 @@
+-outputmask: ${@bsn}.jar
+-include: https://dl.equoplatform.com/framework/1.0.0/equoapp.bnd,\
+	https://dl.equoplatform.com/framework-extras/1.0.0/extras.bnd,\
+	https://dl.equoplatform.com/monaco-editor/1.0.0/monaco.bnd,\
+	https://dl.equoplatform.com/framework-renderers/1.0.0/aspects.bnd
+#-runrepos: Release
+
+Bundle-Version: 0.0.1
+Private-Package: com.equo.poc
+    
+# Application Name
+appName=EquoApp
+# Application background color
+bgColor=#0000FF
+# Username and password to connect to the Equo Platform. For example for analytics
+equoUsername='YWRtaW4='
+equoPassword=bHVzaXRhbm8yMDE4
+
+-privatepackage: \
+	com.equo.poc.eventhandlers,\
+	com.equo.poc.payloads
+#-runproperties.devmode: dev.app.url=192.168.0.24:8080
+#-runvm.debug: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=1044"
+-runbundles.poc: \
+    com.equo.widgets.shell

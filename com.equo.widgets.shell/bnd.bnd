@@ -1,6 +1,6 @@
 Bundle-Version: 0.0.1
 
--privatepackage: com.make.equo.widgets.shell
+-privatepackage: com.equo.widgets.shell
 
 -buildpath: \
 	org.eclipse.osgi,\
