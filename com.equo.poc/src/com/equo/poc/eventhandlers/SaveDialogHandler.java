@@ -8,8 +8,8 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
-import com.equo.ws.api.IEquoEventHandler;
-import com.equo.ws.api.IEquoRunnable;
+import com.equo.comm.api.IEquoEventHandler;
+import com.equo.comm.api.IEquoRunnable;
 
 @Component
 public class SaveDialogHandler {
