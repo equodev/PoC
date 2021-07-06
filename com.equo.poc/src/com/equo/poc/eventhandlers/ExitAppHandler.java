@@ -5,7 +5,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.osgi.service.component.annotations.Component;
 
 import com.equo.poc.payloads.Payload;
-import com.equo.ws.api.actions.IActionHandler;
+import com.equo.comm.api.actions.IActionHandler;
 
 @SuppressWarnings("serial")
 @Component
